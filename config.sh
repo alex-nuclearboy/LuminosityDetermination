@@ -9,3 +9,5 @@ scp wasa:/data7/users/khreptak/OUTPUT/MC/LUMIN/MC-dnpi_plus_thetacut-x6.root ./i
 mkdir ./output
 mkdir ./output/plots
 mkdir ./output/files
+mkdir ./ThetaCD_fit/plots
+mkdir ./ThetaCD_fit/files
