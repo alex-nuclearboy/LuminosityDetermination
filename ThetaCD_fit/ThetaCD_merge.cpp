@@ -40,6 +40,9 @@
 
 void ThetaCD_merge() {
 
+    cout<<fixed;
+    cout.precision(2);
+
     //open the ROOT file with data
     f[0] = new TFile("../input/DATA_ppn_qf_offset.root","READ");
     f[1] = new TFile("../input/MC-ppn_qf-PARIS-x6.root","READ");
