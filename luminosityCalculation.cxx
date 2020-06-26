@@ -513,6 +513,7 @@ void LuminosityCalculation(){
     legend00->Draw("same");
 
     MyCanvas00->Print("output/plots/hExcessEnergy_DATA_accept.png","png");
+    MyCanvas00->Print("output/plots/hExcessEnergy_DATA_accept.eps","eps");
 
     //
     TCanvas* MyCanvas01 = new TCanvas;
@@ -552,6 +553,7 @@ void LuminosityCalculation(){
     legend01->Draw("same");
 
     MyCanvas01->Print("output/plots/hGenerated_WMC.png","png");
+    MyCanvas01->Print("output/plots/hGenerated_WMC.eps","eps");
 
     //
     TCanvas* MyCanvas02 = new TCanvas;
@@ -628,6 +630,7 @@ void LuminosityCalculation(){
     legend02->Draw("same");
 
     MyCanvas02->Print("output/plots/hExcessEnergy_WMC_XS.png","png");
+    MyCanvas02->Print("output/plots/hExcessEnergy_WMC_XS.eps","eps");
 
     //
     TCanvas* MyCanvas03 = new TCanvas;
@@ -646,12 +649,12 @@ void LuminosityCalculation(){
     //hLuminosity_syst->GetXaxis()->SetRangeUser(-70.,30.);
     hLuminosity_syst->GetYaxis()->SetRangeUser(0.,maxY03);
 
-    hLuminosity_syst->SetLineWidth(1);
+    //hLuminosity_syst->SetLineWidth(1);
     hLuminosity_syst->SetLineColor(2);
     //hLuminosity_syst->SetMarkerStyle(2);
     //hLuminosity_syst->SetMarkerColor(2);
-    hLuminosity_syst->SetMarkerSize(1);
-    hLuminosity_syst->SetFillStyle(3002);
+    //hLuminosity_syst->SetMarkerSize(1);
+    hLuminosity_syst->SetFillStyle(3345);
     hLuminosity_syst->SetFillColor(2);
     hLuminosity_syst->Draw("E2");
 
@@ -676,9 +679,6 @@ void LuminosityCalculation(){
 
     TLegend *legend03 = new TLegend(0.150, 0.345, 0.480, 0.575);
     legend03->SetFillStyle(1); legend03->SetFillColor(0); legend03->SetLineColor(0); legend03->SetTextSize(0.04);
-    //legend03->AddEntry((TObject*)0, Lum_result, "");
-    //legend03->AddEntry( hLuminosity, "\\hbox{świetlność}", "pe");
-    //legend03->AddEntry( fitFcn, "funkcja dopasowania", "l");
     legend03->AddEntry( hLuminosity, "luminosity", "pe");
     legend03->AddEntry( hLuminosity_syst, "systematic errors", "f");
     legend03->AddEntry( fitLum, "fitting function", "l");
@@ -687,7 +687,7 @@ void LuminosityCalculation(){
     legend03->Draw("same");
 
     TPaveText *descr = new TPaveText(-19.,11.6,27.3,45.4);
-    TText *tl01 = descr->AddText(Form("L_{int} = (%.0f #pm %.0f #pm %.0f #pm %.0f) nb^{-1}",luminosityTotal,errStatLuminTotal,errSystLuminTotal,0.04*luminosityTotal));
+    TText *tl01 = descr->AddText(Form("L = (%.0f #pm %.0f #pm %.0f #pm %.0f) nb^{-1}",luminosityTotal,errStatLuminTotal,errSystLuminTotal,0.04*luminosityTotal));
     TText *tl02 = descr->AddText(Param[0]);
     TText *tl03 = descr->AddText(Param[1]);
     TText *tl04 = descr->AddText(Param[2]);
@@ -711,6 +711,32 @@ void LuminosityCalculation(){
     descr->Draw("same");
 
     MyCanvas03->Print("output/plots/hLuminosity.png","png");
+    MyCanvas03->Print("output/plots/hLuminosity.eps","eps");
+
+    //
+    TCanvas* MyCanvas03a = new TCanvas;
+
+    double maxY03 = 1.2*(hLuminosity->GetMaximum());
+
+    hLuminosity_syst->SetTitle();
+    hLuminosity_syst->GetXaxis()->SetTitle("\\hbox{energia dostępna, MeV}");
+    hLuminosity_syst->GetYaxis()->SetTitle("\\hbox{świetlność całkowita, } \\hbox{nb}^{\\hbox{-1}}");
+    hLuminosity_syst->Draw("E2");
+    hLuminosity->Draw("same E1");
+    fitLum->Draw("same C");
+
+    TLegend *legend03a = new TLegend(0.150, 0.345, 0.505, 0.575);
+    legend03a->SetFillStyle(1001); legend03a->SetFillColor(19); legend03a->SetLineColor(1); legend03a->SetTextSize(0.04); legend03a->SetBorderSize(5);
+    legend03a->AddEntry( hLuminosity, "\\hbox{świetlność}", "pe");
+    legend03a->AddEntry( hLuminosity_syst, "\\hbox{błędy systematyczne}", "f");
+    legend03a->AddEntry( fitLum, "funkcja dopasowania", "l");
+    legend03a->AddEntry((TObject*)0, "aQ^{3} + bQ^{2} + cQ + d", "");
+    legend03a->Draw();
+
+    descr->Draw("same");
+
+    MyCanvas03a->Print("output/plots/hLuminosity_pl.png","png");
+    MyCanvas03a->Print("output/plots/hLuminosity_pl.eps","eps");
 
     //
     TCanvas* MyCanvas04=new TCanvas;
@@ -732,16 +758,13 @@ void LuminosityCalculation(){
         hDeltaPhi_Q[0][i]->SetMarkerColor(1);
         hDeltaPhi_Q[0][i]->SetMarkerSize(1);
         hDeltaPhi_Q[0][i]->SetMarkerStyle(2);
-        hDeltaPhi_Q[0][i]->DrawCopy("C");
+        hDeltaPhi_Q[0][i]->Draw("C");
 
-        hDeltaPhi_clear_Q[0][i]->SetLineColor(kOrange+1);
+        hDeltaPhi_clear_Q[0][i]->SetLineColor(kOrange+7);
         hDeltaPhi_clear_Q[0][i]->SetLineWidth(1);
-        hDeltaPhi_clear_Q[0][i]->SetMarkerColor(kOrange+1);
-        hDeltaPhi_clear_Q[0][i]->SetFillColor(kOrange+1);
-        hDeltaPhi_clear_Q[0][i]->SetFillStyle(3002);
-        hDeltaPhi_clear_Q[0][i]->SetMarkerSize(1);
-        hDeltaPhi_clear_Q[0][i]->SetMarkerStyle(2);
-        hDeltaPhi_clear_Q[0][i]->DrawCopy("same C");
+        hDeltaPhi_clear_Q[0][i]->SetFillColor(kOrange+7);
+        hDeltaPhi_clear_Q[0][i]->SetFillStyle(3354);
+        hDeltaPhi_clear_Q[0][i]->Draw("same LF2");
 
         fitBkgnd[0][i]->SetLineColor(kCyan-3);
         fitBkgnd[0][i]->SetLineWidth(2);
@@ -754,9 +777,33 @@ void LuminosityCalculation(){
         legend04->AddEntry( hDeltaPhi_clear_Q[0][i], "signal", "f");
         legend04->Draw("same");
 
-        TString plot_Fit = Form("output/plots/hDeltaPhi_Q%d.png",i);
+        MyCanvas04->Print(Form("output/plots/hDeltaPhi_Q%d.png",i),"png");
+        MyCanvas04->Print(Form("output/plots/hDeltaPhi_Q%d.eps",i),"eps");
 
-        MyCanvas04->Print(plot_Fit,"png");
+    }
+
+    //
+    TCanvas* MyCanvas04a=new TCanvas;
+
+    for(Int_t i = 1; i < 41; i++) {
+
+        hDeltaPhi_Q[0][i]->SetTitle(Form("Q #in (%G,%G) GeV",-70.+(i-1)*2.5,-67.5+(i-1)*2.5));
+        hDeltaPhi_Q[0][i]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+        hDeltaPhi_Q[0][i]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
+        hDeltaPhi_Q[0][i]->Draw("C");
+
+        hDeltaPhi_clear_Q[0][i]->Draw("same LF2");
+        fitBkgnd[0][i]->Draw("same");
+
+        TLegend *legend04a = new TLegend(0.535, 0.700, 0.890, 0.885);
+        legend04a->SetFillStyle(1001); legend04a->SetFillColor(19); legend04a->SetLineColor(1); legend04a->SetTextSize(0.04); legend04a->SetBorderSize(5);
+        legend04a->AddEntry( hDeltaPhi_Q[0][i], "dane eksperymentalne", "l");
+        legend04a->AddEntry( fitBkgnd[0][i], "funkcja dopasowania", "l");
+        legend04a->AddEntry( hDeltaPhi_clear_Q[0][i], "\\hbox{sygnał}", "f");
+        legend04a->Draw();
+
+        MyCanvas04a->Print(Form("output/plots/hDeltaPhi_Q%d_pl.png",i),"png");
+        MyCanvas04a->Print(Form("output/plots/hDeltaPhi_Q%d_pl.eps",i),"eps");
 
     }
 
@@ -780,16 +827,13 @@ void LuminosityCalculation(){
     hDeltaPhi[0]->SetMarkerColor(1);
     hDeltaPhi[0]->SetMarkerStyle(2);
     hDeltaPhi[0]->SetMarkerSize(1);
-    hDeltaPhi[0]->DrawCopy("C");
+    hDeltaPhi[0]->Draw("C");
 
     hDeltaPhi_clear[0]->SetLineWidth(1);
-    hDeltaPhi_clear[0]->SetLineColor(kOrange+1);
-    hDeltaPhi_clear[0]->SetFillColor(kOrange+1);
-    hDeltaPhi_clear[0]->SetFillStyle(3002);
-    //hDeltaPhi_clear[0]->SetMarkerColor(kOrange+1);
-    //hDeltaPhi_clear[0]->SetMarkerStyle(2);
-    //hDeltaPhi_clear[0]->SetMarkerSize(1);
-    hDeltaPhi_clear[0]->DrawCopy("same C");
+    hDeltaPhi_clear[0]->SetLineColor(kOrange+7);
+    hDeltaPhi_clear[0]->SetFillColor(kOrange+7);
+    hDeltaPhi_clear[0]->SetFillStyle(3354);
+    hDeltaPhi_clear[0]->Draw("same LF2");
 
     TLegend *legend05 = new TLegend(0.585, 0.760, 0.890, 0.885);
     legend05->SetFillStyle(1); legend05->SetFillColor(0); legend05->SetLineColor(0); legend05->SetTextSize(0.04);
@@ -798,5 +842,25 @@ void LuminosityCalculation(){
     legend05->Draw();
 
     MyCanvas05->Print("output/plots/hDeltaPhi.png","png");
+    MyCanvas05->Print("output/plots/hDeltaPhi.eps","eps");
+
+    //
+    TCanvas* MyCanvas05a=new TCanvas;
+
+    hDeltaPhi[0]->SetTitle("");
+    hDeltaPhi[0]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi[0]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
+    hDeltaPhi[0]->Draw("C");
+
+    hDeltaPhi_clear[0]->Draw("same LF2");
+
+    TLegend *legend05a = new TLegend(0.535, 0.760, 0.890, 0.885);
+    legend05a->SetFillStyle(1001); legend05a->SetFillColor(19); legend05a->SetLineColor(1); legend05a->SetTextSize(0.04); legend05a->SetBorderSize(5);
+    legend05a->AddEntry( hDeltaPhi[0], "dane eksperymentalne", "l");
+    legend05a->AddEntry( hDeltaPhi_clear[0], "\\hbox{sygnał}", "f");
+    legend05a->Draw();
+
+    MyCanvas05a->Print("output/plots/hDeltaPhi_pl.png","png");
+    MyCanvas05a->Print("output/plots/hDeltaPhi_pl.eps","eps");
 
 }
