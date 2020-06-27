@@ -90,6 +90,7 @@ void luminosityCalculation(){
 
     TH1D *hDeltaPhi[12];
     TH1D *hDeltaPhi_clear[12];
+    TH1D *hDeltaPhi_MC;
 
     TH1D *hDeltaPhi_Q[12][41];
     TH1D *hDeltaPhi_cut_Q[12][41];
@@ -116,6 +117,8 @@ void luminosityCalculation(){
     for (Int_t j = 0; j < 11; j++) {
         hGenerated_WMC[j] = (TH1D*)gDirectory->Get("WMC/hGenerated_Q");
     }
+
+    hDeltaPhi_MC = (TH1D*)gDirectory->Get("DATA_lev5/hDeltaPhi_sym_lev5");
 
     //main cuts
     hExcessEnergy_WMC_XS_sq[0] = (TH1D*)gDirectory->Get("DATA_lev5/hQ_wght_sq_lev5");
@@ -854,7 +857,7 @@ void luminosityCalculation(){
 
     hDeltaPhi_clear[0]->Draw("same LF2");
 
-    TLegend *legend05a = new TLegend(0.535, 0.760, 0.890, 0.885);
+    TLegend *legend05a = new TLegend(0.535, 0.768, 0.890, 0.885);
     legend05a->SetFillStyle(1001); legend05a->SetFillColor(19); legend05a->SetLineColor(1); legend05a->SetTextSize(0.04); legend05a->SetBorderSize(5);
     legend05a->AddEntry( hDeltaPhi[0], "dane eksperymentalne", "l");
     legend05a->AddEntry( hDeltaPhi_clear[0], "\\hbox{sygnał}", "f");
@@ -862,5 +865,52 @@ void luminosityCalculation(){
 
     MyCanvas05a->Print("output/plots/hDeltaPhi_pl.png","png");
     MyCanvas05a->Print("output/plots/hDeltaPhi_pl.eps","eps");
+
+    //
+    TCanvas* MyCanvas06=new TCanvas;
+
+    //hDeltaPhi_MC->SetTitle("Complanarity");
+    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi_MC->GetXaxis()->SetTitleOffset(0.9);
+    hDeltaPhi_MC->GetXaxis()->SetTitleSize(0.06);
+    hDeltaPhi_MC->GetXaxis()->SetLabelSize(0.05);
+    hDeltaPhi_MC->GetYaxis()->SetTitle("counts");
+    hDeltaPhi_MC->GetYaxis()->SetTitleOffset(0.9);
+    hDeltaPhi_MC->GetYaxis()->SetTitleSize(0.06);
+    hDeltaPhi_MC->GetYaxis()->SetLabelSize(0.05);
+    hDeltaPhi_MC->GetYaxis()->SetRangeUser(0,1.07*(hDeltaPhi_MC->GetMaximum()));
+    //hDeltaPhi_MC->GetXaxis()->SetRangeUser(90,270);
+
+    hDeltaPhi_MC->SetLineWidth(2);
+    hDeltaPhi_MC->SetLineColor(kAzure-3);
+    hDeltaPhi_MC->SetFillColor(kAzure-3);
+    hDeltaPhi_MC->SetFillStyle(3354);
+    hDeltaPhi_MC->Draw("LF2");
+
+    TLegend *legend06 = new TLegend(0.560, 0.830, 0.890, 0.885);
+    legend06->SetFillStyle(1); legend06->SetFillColor(0); legend06->SetLineColor(0); legend06->SetTextSize(0.04);
+    legend06->AddEntry( hDeltaPhi_MC, "numerical data WMC", "f");
+    legend06->Draw();
+
+    MyCanvas06->Print("output/plots/hDeltaPhi_MC.png","png");
+    MyCanvas06->Print("output/plots/hDeltaPhi_MC.eps","eps");
+
+    //
+    TCanvas* MyCanvas06a=new TCanvas;
+
+    hDeltaPhi_MC->SetTitle("");
+    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi_MC->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
+    hDeltaPhi_MC->Draw("LF2");
+
+    hDeltaPhi_MC->SetLineWidth(1);
+
+    TLegend *legend06a = new TLegend(0.585, 0.830, 0.890, 0.885);
+    legend06a->SetFillStyle(1001); legend06a->SetFillColor(19); legend06a->SetLineColor(1); legend06a->SetTextSize(0.04); legend06a->SetBorderSize(5);
+    legend06a->AddEntry( hDeltaPhi_MC, "dane numeryczne", "f");
+    legend06a->Draw();
+
+    MyCanvas06a->Print("output/plots/hDeltaPhi_MC_pl.png","png");
+    MyCanvas06a->Print("output/plots/hDeltaPhi_MC_pl.eps","eps");
 
 }
