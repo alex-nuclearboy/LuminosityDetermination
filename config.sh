@@ -11,3 +11,5 @@ mkdir ./output/plots
 mkdir ./output/files
 mkdir ./ThetaCD_fit/plots
 mkdir ./ThetaCD_fit/files
+scp wasa:/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-PARIS-1.dat ./input
+scp wasa:/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-CDBONN-1.dat ./input

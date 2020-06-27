@@ -111,7 +111,7 @@ void diffCrossSection_pp() {
 
     for (int th = 0; th < 181; th++) {
 
-        said_file = fopen(Form("input/SAID_data/Theta_%i.txt", th), "r");
+        said_file = fopen(Form("../Analysis/QuasifreeReactionAnalysis/mc-analysis/SAID_data/Theta_%i.txt", th), "r");
 
         gXS[th] = new TGraph();
 
@@ -135,8 +135,8 @@ void diffCrossSection_pp() {
     TH1F *hBeam_momentum_eff = new TH1F("hBeam_momentum_eff","",100,0.,3.);
 
     ifstream Mom_file;
-    Mom_file.open("input/ProtonVariables/ProtonVariables-PARIS-1.dat");
-    //Mom_file.open("input/ProtonVariables/ProtonVariables-CDBONN-1.dat");
+    Mom_file.open("input/ProtonVariables-PARIS-1.dat");
+    //Mom_file.open("input/ProtonVariables-CDBONN-1.dat");
 
     double p_beam_eff;
     double Theta_scatt_cm;
