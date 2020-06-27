@@ -62,7 +62,7 @@ Double_t polynomialFunc(Double_t *x, Double_t *par) {
 }
 
 //
-void LuminosityCalculation(){
+void luminosityCalculation(){
 
     cout<<fixed;
     cout.precision(2);
