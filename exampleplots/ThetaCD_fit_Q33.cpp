@@ -279,7 +279,7 @@ void ThetaCD_fit_Q33() {
         hThetaCD_DATA_sign_i[j]->Draw("same LF2");
 
         hThetaCD_DATA_bkgnd_i[j]->SetLineColor(kViolet-5);
-        hThetaCD_DATA_bkgnd_i[j]->SetFillStyle(3345);
+        hThetaCD_DATA_bkgnd_i[j]->SetFillStyle(3344);
         hThetaCD_DATA_bkgnd_i[j]->SetFillColor(kViolet-5);
         hThetaCD_DATA_bkgnd_i[j]->SetLineWidth(1);
         hThetaCD_DATA_bkgnd_i[j]->Draw("same LF2");

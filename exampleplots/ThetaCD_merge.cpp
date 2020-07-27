@@ -205,7 +205,7 @@ void ThetaCD_merge() {
     hThetaCD_MC_pd_cut->SetLineColor(kSpring-6);
     hThetaCD_MC_pd_cut->SetLineWidth(1);
     hThetaCD_MC_pd_cut->SetFillColor(kSpring-6);
-    hThetaCD_MC_pd_cut->SetFillStyle(3345);
+    hThetaCD_MC_pd_cut->SetFillStyle(3344);
     hThetaCD_MC_pd_cut->Scale(scaleMC01);
     hThetaCD_MC_pd_cut->Draw("same LF2");
 
@@ -291,7 +291,7 @@ void ThetaCD_merge() {
     hThetaCD_DATA_sign_cut->Draw("same LF2");
 
     hThetaCD_DATA_bkgnd->SetLineColor(kViolet-5);
-    hThetaCD_DATA_bkgnd->SetFillStyle(3345);
+    hThetaCD_DATA_bkgnd->SetFillStyle(3344);
     hThetaCD_DATA_bkgnd->SetFillColor(kViolet-5);
     hThetaCD_DATA_bkgnd->SetLineWidth(1);
     hThetaCD_DATA_bkgnd->Draw("same LF2");
