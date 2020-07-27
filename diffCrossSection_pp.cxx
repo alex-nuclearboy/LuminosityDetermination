@@ -51,7 +51,7 @@ void diffCrossSection_pp() {
     double y_35[] = {7.235,7.212,7.171,7.235,7.124,7.089,7.003,7.028,6.983,6.946,7.002,6.729,6.772,6.667,6.573,6.496,6.404,6.343,6.162};
     //total error (stat+syst)
     double y_err_35[] = {0.206,0.205,0.201,0.203,0.2,0.199,0.196,0.197,0.196,0.195,0.196,0.189,0.190,0.189,0.187,0.183,0.180,0.179,0.174};
-    TGraphErrors* XS_graph[35] = new TGraphErrors(20,x_35,y_35,0,y_err_35);
+    XS_graph[35] = new TGraphErrors(20,x_35,y_35,0,y_err_35);
 
     XS_graph[35]->SetMarkerStyle(23);
     XS_graph[35]->SetMarkerSize(0.8);
@@ -62,7 +62,7 @@ void diffCrossSection_pp() {
     double y_41[] = {4.066,4.190,4.233,4.364,4.478,4.601,4.747,4.881,4.939,5.161,5.195,5.305,5.374,5.518,5.523,5.580,5.626,5.600,5.573,5.500,5.566,5.533,5.460,5.369,5.237,5.193,5.141,5.016,4.952,4.852,4.828,4.732,4.671};
     //total error (stat+syst)
     double y_err_41[] = {0.117,0.121,0.122,0.125,0.128,0.128,0.132,0.136,0.137,0.143,0.144,0.147,0.149,0.153,0.153,0.155,0.156,0.155,0.155,0.153,0.155,0.154,0.153,0.150,0.146,0.145,0.143,0.141,0.139,0.136,0.135,0.132,0.131};
-    TGraphErrors* XS_graph[41] = new TGraphErrors(33,x_41,y_41,0,y_err_41);
+    XS_graph[41] = new TGraphErrors(33,x_41,y_41,0,y_err_41);
 
     XS_graph[41]->SetMarkerStyle(23);
     XS_graph[41]->SetMarkerSize(0.8);
@@ -111,7 +111,7 @@ void diffCrossSection_pp() {
 
     for (int th = 0; th < 181; th++) {
 
-        said_file = fopen(Form("../Analysis/QuasifreeReactionAnalysis/mc-analysis/SAID_data/Theta_%i.txt", th), "r");
+        said_file = fopen(Form("input/SAID_data/Theta_%i.txt", th), "r");
 
         gXS[th] = new TGraph();
 
