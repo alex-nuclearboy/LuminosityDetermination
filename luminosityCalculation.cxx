@@ -652,14 +652,14 @@ void luminosityCalculation(){
     //hLuminosity_syst->GetXaxis()->SetRangeUser(-70.,30.);
     hLuminosity_syst->GetYaxis()->SetRangeUser(0.,maxY03);
 
-    //hLuminosity_syst->SetLineWidth(1);
+    hLuminosity_syst->SetLineWidth(1);
     hLuminosity_syst->SetLineColor(2);
-    //hLuminosity_syst->SetMarkerStyle(2);
-    //hLuminosity_syst->SetMarkerColor(2);
-    //hLuminosity_syst->SetMarkerSize(1);
-    hLuminosity_syst->SetFillStyle(3345);
-    hLuminosity_syst->SetFillColor(2);
-    hLuminosity_syst->Draw("E2");
+    hLuminosity_syst->SetMarkerStyle(2);
+    hLuminosity_syst->SetMarkerColor(2);
+    hLuminosity_syst->SetMarkerSize(1);
+    //hLuminosity_syst->SetFillStyle(3345);
+    //hLuminosity_syst->SetFillColor(2);
+    hLuminosity_syst->Draw("E1");
 
     hLuminosity->SetLineWidth(1);
     hLuminosity->SetLineColor(1);
@@ -676,14 +676,14 @@ void luminosityCalculation(){
     TString Param[4];
 
     Param[0]=Form("a = (%.2f #pm %.2f)#upoint10^{-5} nb^{-1}#upointMeV^{-3}",P[0],errP[0]);
-    Param[1]=Form("b = (%.2f #pm %.2f)#upoint10^{-4} nb^{-1}#upointMeV^{-3}",P[1],errP[1]);
-    Param[2]=Form("c = (%.2f #pm %.2f)#upoint10^{-2} nb^{-1}#upointMeV^{-3}",P[2],errP[2]);
-    Param[3]=Form("d = (%.2f #pm %.2f) nb^{-1}#upointMeV^{-3}",P[3],errP[3]);
+    Param[1]=Form("b = (%.2f #pm %.2f)#upoint10^{-4} nb^{-1}#upointMeV^{-2}",P[1],errP[1]);
+    Param[2]=Form("c = (%.2f #pm %.2f)#upoint10^{-2} nb^{-1}#upointMeV^{-1}",P[2],errP[2]);
+    Param[3]=Form("d = (%.2f #pm %.2f) nb^{-1}",P[3],errP[3]);
 
     TLegend *legend03 = new TLegend(0.150, 0.345, 0.480, 0.575);
     legend03->SetFillStyle(1); legend03->SetFillColor(0); legend03->SetLineColor(0); legend03->SetTextSize(0.04);
     legend03->AddEntry( hLuminosity, "luminosity", "pe");
-    legend03->AddEntry( hLuminosity_syst, "systematic errors", "f");
+    legend03->AddEntry( hLuminosity_syst, "systematic errors", "pe");
     legend03->AddEntry( fitLum, "fitting function", "l");
     legend03->AddEntry((TObject*)0, "aQ^{3} + bQ^{2} + cQ + d", "");
     //legend03->AddEntry( fitFcn, "fitting function (aQ^{3}+bQ^{2}+cQ+d)", "l");
@@ -724,19 +724,19 @@ void luminosityCalculation(){
     hLuminosity_syst->SetTitle();
     hLuminosity_syst->GetXaxis()->SetTitle("\\hbox{energia dostępna, MeV}");
     hLuminosity_syst->GetYaxis()->SetTitle("\\hbox{świetlność całkowita, } \\hbox{nb}^{\\hbox{-1}}");
-    hLuminosity_syst->Draw("E2");
+    hLuminosity_syst->Draw("E1");
     hLuminosity->Draw("same E1");
     fitLum->Draw("same C");
 
-    TLegend *legend03a = new TLegend(0.150, 0.345, 0.505, 0.575);
+    TLegend *legend03a = new TLegend(0.535, 0.385, 0.885, 0.615);
     legend03a->SetFillStyle(1001); legend03a->SetFillColor(19); legend03a->SetLineColor(1); legend03a->SetTextSize(0.04); legend03a->SetBorderSize(5);
     legend03a->AddEntry( hLuminosity, "\\hbox{świetlność}", "pe");
-    legend03a->AddEntry( hLuminosity_syst, "\\hbox{błędy systematyczne}", "f");
+    legend03a->AddEntry( hLuminosity_syst, "\\hbox{błędy systematyczne}", "pe");
     legend03a->AddEntry( fitLum, "funkcja dopasowania", "l");
     legend03a->AddEntry((TObject*)0, "aQ^{3} + bQ^{2} + cQ + d", "");
     legend03a->Draw();
 
-    descr->Draw("same");
+    //descr->Draw("same");
 
     MyCanvas03a->Print("output/plots/hLuminosity_pl.png","png");
     MyCanvas03a->Print("output/plots/hLuminosity_pl.eps","eps");
@@ -905,9 +905,9 @@ void luminosityCalculation(){
 
     hDeltaPhi_MC->SetLineWidth(1);
 
-    TLegend *legend06a = new TLegend(0.585, 0.830, 0.890, 0.885);
+    TLegend *legend06a = new TLegend(0.565, 0.815, 0.890, 0.885);
     legend06a->SetFillStyle(1001); legend06a->SetFillColor(19); legend06a->SetLineColor(1); legend06a->SetTextSize(0.04); legend06a->SetBorderSize(5);
-    legend06a->AddEntry( hDeltaPhi_MC, "dane numeryczne", "f");
+    legend06a->AddEntry( hDeltaPhi_MC, "WMC: pd #rightarrow ppn_{sp}", "f");
     legend06a->Draw();
 
     MyCanvas06a->Print("output/plots/hDeltaPhi_MC_pl.png","png");
