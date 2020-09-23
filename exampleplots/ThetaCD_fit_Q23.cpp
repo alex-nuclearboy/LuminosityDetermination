@@ -241,10 +241,10 @@ void ThetaCD_fit_Q23() {
         Double_t Ymax01 = 1.1*hThetaCD_DATA_j[j]->GetMaximum();
         Double_t scaleMC01 = (hThetaCD_DATA_j[j]->GetMaximum())/(hThetaCD_MC_i[j]->GetMaximum());
 
-        TString descr01 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G#circ,%G#circ)",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
+        TString descr01 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G, %G) deg",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
 
         hThetaCD_DATA_j[j]->SetTitle(descr01);
-        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD},#circ");
+        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD} (deg)");
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleOffset(1.);
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleSize(0.06);
         hThetaCD_DATA_j[j]->GetXaxis()->SetLabelSize(0.05);

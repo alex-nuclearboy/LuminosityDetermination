@@ -236,10 +236,10 @@ void ThetaCD_fit_Q33() {
         Double_t Ymax01 = 1.1*hThetaCD_DATA_j[j]->GetMaximum();
         Double_t scaleMC01 = (hThetaCD_DATA_j[j]->GetMaximum())/(hThetaCD_MC_i[j]->GetMaximum());
 
-        TString descr01 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G#circ,%G#circ)",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
+        TString descr01 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G,%G) deg",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
 
         hThetaCD_DATA_j[j]->SetTitle(descr01);
-        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD},#circ");
+        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD} [deg]");
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleOffset(1.);
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleSize(0.06);
         hThetaCD_DATA_j[j]->GetXaxis()->SetLabelSize(0.05);
@@ -272,15 +272,15 @@ void ThetaCD_fit_Q33() {
         hThetaCD_MC_i[j]->Scale(scaleMC01);
         //hThetaCD_MC_i[j]->Draw("same E1");
 
-        hThetaCD_DATA_sign_i[j]->SetLineColor(kOrange+7);
+        hThetaCD_DATA_sign_i[j]->SetLineColor(kOrange+1);
         hThetaCD_DATA_sign_i[j]->SetFillStyle(3354);
-        hThetaCD_DATA_sign_i[j]->SetFillColor(kOrange+7);
+        hThetaCD_DATA_sign_i[j]->SetFillColor(kOrange+1);
         hThetaCD_DATA_sign_i[j]->SetLineWidth(1);
         hThetaCD_DATA_sign_i[j]->Draw("same LF2");
 
-        hThetaCD_DATA_bkgnd_i[j]->SetLineColor(kViolet-5);
+        hThetaCD_DATA_bkgnd_i[j]->SetLineColor(kViolet-7);
         hThetaCD_DATA_bkgnd_i[j]->SetFillStyle(3344);
-        hThetaCD_DATA_bkgnd_i[j]->SetFillColor(kViolet-5);
+        hThetaCD_DATA_bkgnd_i[j]->SetFillColor(kViolet-7);
         hThetaCD_DATA_bkgnd_i[j]->SetLineWidth(1);
         hThetaCD_DATA_bkgnd_i[j]->Draw("same LF2");
 
@@ -331,6 +331,17 @@ void ThetaCD_fit_Q33() {
         //MyLegend01->AddEntry(hThetaCD_MC_i[j], "WMC: pd #rightarrow ppn_{spectator}", "ep");
         MyLegend01->AddEntry(MyLine010, "cut: #theta_{CD}#in(40,100)#circ", "l");
         MyLegend01->Draw("same");
+
+        TPaveText *text_lev01 = new TPaveText(32.,850., 32.,850.,"capt");
+        text_lev01->SetTextFont(42); text_lev01->SetTextSize(0.06);
+        text_lev01->SetTextAlign(22);
+        text_lev01->SetFillStyle(0);
+        text_lev01->SetShadowColor(0); text_lev01->SetFillColor(0);
+        text_lev01->SetBorderSize(0);
+        text_lev01->AddText("(d)");
+        text_lev01->Draw("");
+
+        //MyCanvas01->GetCanvas()->SetGrayscale();
 
         MyCanvas01->Print(Form("hThetaCD_DATA_Q%d_Th%d.png",q,j),"png");
         MyCanvas01->Print(Form("hThetaCD_DATA_Q%d_Th%d.eps",q,j),"eps");
