@@ -163,8 +163,8 @@ void diffCrossSection_pp() {
     TCanvas* MyCanvas01 = new TCanvas;
 
     //hBeam_momentum_eff->SetTitle("Effective beam momentum");
-    hBeam_momentum_eff->GetXaxis()->SetTitle("effective beam momentum, GeV/c");
-    hBeam_momentum_eff->GetYaxis()->SetTitle("d#sigma/d#Omega, mb/sr");
+    hBeam_momentum_eff->GetXaxis()->SetTitle("effective beam momentum [GeV/c]");
+    hBeam_momentum_eff->GetYaxis()->SetTitle("d#sigma/d#Omega [mb/sr]");
     hBeam_momentum_eff->GetXaxis()->SetTitleSize(0.06);
     hBeam_momentum_eff->GetXaxis()->SetTitleOffset(1.1);
     hBeam_momentum_eff->GetXaxis()->SetLabelSize(0.05);
@@ -180,28 +180,34 @@ void diffCrossSection_pp() {
     hBeam_momentum_eff->Scale(0.00012);
     hBeam_momentum_eff->DrawCopy("C");
 
-    gXS[35]->SetLineColor(51);
+    gXS[35]->SetLineColor(kMagenta+2);
     gXS[35]->SetLineWidth(1);
+    gXS[35]->SetLineStyle(8);
     gXS[35]->Draw("same");
 
-    gXS[41]->SetLineColor(60);
+    gXS[41]->SetLineColor(kBlue-3);
     gXS[41]->SetLineWidth(1);
+    gXS[41]->SetLineStyle(4);
     gXS[41]->Draw("same");
 
-    gXS[55]->SetLineColor(66);
+    gXS[55]->SetLineColor(kAzure+7);
     gXS[55]->SetLineWidth(1);
+    gXS[55]->SetLineStyle(5);
     gXS[55]->Draw("same");
 
-    gXS[75]->SetLineColor(75);
+    gXS[75]->SetLineColor(kTeal+5);
     gXS[75]->SetLineWidth(1);
+    gXS[75]->SetLineStyle(6);
     gXS[75]->Draw("same");
 
-    gXS[89]->SetLineColor(92);
+    gXS[89]->SetLineColor(kOrange+7);
     gXS[89]->SetLineWidth(1);
+    gXS[89]->SetLineStyle(3);
     gXS[89]->Draw("same");
 
     gXS[150]->SetLineColor(1);
     gXS[150]->SetLineWidth(1);
+    gXS[150]->SetLineStyle(1);
     gXS[150]->Draw("same");
 
     XS_graph[35]->Draw("same p");
@@ -215,18 +221,30 @@ void diffCrossSection_pp() {
     MyLegend01->SetBorderSize(5);
     MyLegend01->AddEntry( XS_graph[35], "EDDA" , "p");
     MyLegend01->AddEntry((TObject*)0, "SAID:", "");
-    MyLegend01->AddEntry( gXS[35], "#theta^{cm} = 35#circ" , "l");
-    MyLegend01->AddEntry( gXS[41], "#theta^{cm} = 41#circ" , "l");
-    MyLegend01->AddEntry( gXS[55], "#theta^{cm} = 55#circ" , "l");
-    MyLegend01->AddEntry( gXS[75], "#theta^{cm} = 75#circ" , "l");
-    MyLegend01->AddEntry( gXS[89], "#theta^{cm} = 89#circ" , "l");
-    MyLegend01->AddEntry( gXS[150], "#theta^{cm} = 150#circ" , "l");
+    MyLegend01->AddEntry( gXS[35], "#theta^{c.m.} = 35#circ" , "l");
+    MyLegend01->AddEntry( gXS[41], "#theta^{c.m.} = 41#circ" , "l");
+    MyLegend01->AddEntry( gXS[55], "#theta^{c.m.} = 55#circ" , "l");
+    MyLegend01->AddEntry( gXS[75], "#theta^{c.m.} = 75#circ" , "l");
+    MyLegend01->AddEntry( gXS[89], "#theta^{c.m.} = 89#circ" , "l");
+    MyLegend01->AddEntry( gXS[150], "#theta^{c.m.} = 150#circ" , "l");
     MyLegend01->Draw("same");
 
     TLegend *MyLegend01_pb = new TLegend(0.600, 0.820, 0.885, 0.885);
     MyLegend01_pb->SetFillStyle(1); MyLegend01_pb->SetFillColor(0); MyLegend01_pb->SetLineColor(0); MyLegend01_pb->SetTextSize(0.04);
     MyLegend01_pb->AddEntry( hBeam_momentum_eff, "beam momentum" , "l");
     MyLegend01_pb->Draw("same");
+
+    //MyCanvas01->GetCanvas()->SetGrayscale();
+
+    TPaveText *text_lev01 = new TPaveText(2.35,11.,2.35,11.,"capt");
+    text_lev01->SetTextFont(42); text_lev01->SetTextSize(0.06);
+    text_lev01->SetTextAlign(22);
+    text_lev01->SetFillStyle(0);
+    text_lev01->SetShadowColor(0); text_lev01->SetFillColor(0);
+    text_lev01->SetBorderSize(0);
+    text_lev01->AddText("(a)");
+    text_lev01->Draw("");
+
 
     MyCanvas01->Print("output/plots/hCrossSections.png","png");
     MyCanvas01->Print("output/plots/hCrossSections.eps","eps");
