@@ -79,8 +79,8 @@ void drawHistograms_pl() {
     ////
     gStyle->SetOptStat(kFALSE);
     gStyle->SetPalette(1,0);
-    gStyle->SetPadLeftMargin(0.18);
-    gStyle->SetPadRightMargin(0.13);
+    gStyle->SetPadLeftMargin(0.17);
+    gStyle->SetPadRightMargin(0.133);
     gStyle->SetPadBottomMargin(0.15);
     gStyle->SetPadTopMargin(0.1);
     gStyle->SetPalette(55);
@@ -89,7 +89,7 @@ void drawHistograms_pl() {
     gStyle->SetLabelFont(62,"XYZ");
     gStyle->SetTextFont(62);    
 
-    TCanvas* MyCanvas01 = new TCanvas("MyCanvas01","",600,550);
+    TCanvas* MyCanvas01 = new TCanvas("MyCanvas01","",465,500);
 
     hEdepPSBvsSEC[0]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
     hEdepPSBvsSEC[0]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
@@ -97,7 +97,7 @@ void drawHistograms_pl() {
     hEdepPSBvsSEC[0]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[0]->GetXaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[0]->GetYaxis()->SetTitleSize(0.06);
-    hEdepPSBvsSEC[0]->GetYaxis()->SetTitleOffset(1.5);
+    hEdepPSBvsSEC[0]->GetYaxis()->SetTitleOffset(1.55);
     hEdepPSBvsSEC[0]->GetYaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[0]->GetXaxis()->SetRangeUser(0.0010,0.7);
     hEdepPSBvsSEC[0]->GetYaxis()->SetRangeUser(0.00015,0.012);
@@ -112,7 +112,7 @@ void drawHistograms_pl() {
     TText *t01 = pt01->AddText("Dane eksperymentalne");
     pt01->SetFillColor(19);
     t01->SetTextSize(0.06);
-    pt01->Draw();
+    //pt01->Draw();
 
     TPaveText *pt010 = new TPaveText(0.05, 0.005, 0.05, 0.005,"PROTON");
     pt010->SetTextSize(0.06);
@@ -136,11 +136,18 @@ void drawHistograms_pl() {
     pt010->Draw("same");
     pt011->Draw("same");
 
+    TLegend *MyLegend00 = new TLegend(0.385, 0.770, 0.855, 0.885);
+    MyLegend00->SetFillStyle(1001); MyLegend00->SetFillColor(19); MyLegend00->SetLineColor(1); MyLegend00->SetBorderSize(5);
+    MyLegend00->SetTextSize(0.04);
+    MyLegend00->AddEntry((TObject*)0, "Dane eksperyment.", "");
+    MyLegend00->AddEntry(line010, "\\hbox{cięcie}", "l");
+    MyLegend00->Draw();
+
     MyCanvas01->Print("output/plots/hEdepPSBvsSEC_DATA_pl.png","png");
     MyCanvas01->Print("output/plots/hEdepPSBvsSEC_DATA_pl.eps","eps");
 
     //
-    TCanvas* MyCanvas02 = new TCanvas("MyCanvas02","",600,550);
+    TCanvas* MyCanvas02 = new TCanvas("MyCanvas02","",465,500);
 
     hEdepPSBvsSEC[1]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
     hEdepPSBvsSEC[1]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
@@ -148,7 +155,7 @@ void drawHistograms_pl() {
     hEdepPSBvsSEC[1]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[1]->GetXaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[1]->GetYaxis()->SetTitleSize(0.06);
-    hEdepPSBvsSEC[1]->GetYaxis()->SetTitleOffset(1.5);
+    hEdepPSBvsSEC[1]->GetYaxis()->SetTitleOffset(1.55);
     hEdepPSBvsSEC[1]->GetYaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[1]->GetXaxis()->SetRangeUser(0.0010,0.7);
     hEdepPSBvsSEC[1]->GetYaxis()->SetRangeUser(0.00015,0.012);
@@ -163,7 +170,7 @@ void drawHistograms_pl() {
     TText *t02 = pt02->AddText("WMC: pd #rightarrow ppn_{sp}");
     pt02->SetFillColor(19);
     t02->SetTextSize(0.06);
-    pt02->Draw();
+    //pt02->Draw();
 
     TPaveText *pt020 = new TPaveText(0.05, 0.005, 0.05, 0.005,"PROTON");
     pt020->SetTextSize(0.06);
@@ -187,11 +194,18 @@ void drawHistograms_pl() {
     pt020->Draw("same");
     pt021->Draw("same");
 
+    TLegend *MyLegend01 = new TLegend(0.385, 0.770, 0.855, 0.885);
+    MyLegend01->SetFillStyle(1001); MyLegend01->SetFillColor(19); MyLegend01->SetLineColor(1); MyLegend01->SetBorderSize(5);
+    MyLegend01->SetTextSize(0.04);
+    MyLegend01->AddEntry((TObject*)0, "WMC: pd #rightarrow ppn_{sp}", "");
+    MyLegend01->AddEntry(line020, "\\hbox{cięcie}", "l");
+    MyLegend01->Draw();
+
     MyCanvas02->Print("output/plots/hEdepPSBvsSEC_MC_pl.png","png");
     MyCanvas02->Print("output/plots/hEdepPSBvsSEC_MC_pl.eps","eps");
 
     //
-    TCanvas* MyCanvas03 = new TCanvas("MyCanvas03","",600,550);
+    TCanvas* MyCanvas03 = new TCanvas("MyCanvas03","",465,500);
 
     hEdepPSBvsSEC[2]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
     hEdepPSBvsSEC[2]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
@@ -199,22 +213,24 @@ void drawHistograms_pl() {
     hEdepPSBvsSEC[2]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[2]->GetXaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[2]->GetYaxis()->SetTitleSize(0.06);
-    hEdepPSBvsSEC[2]->GetYaxis()->SetTitleOffset(1.5);
+    hEdepPSBvsSEC[2]->GetYaxis()->SetTitleOffset(1.55);
     hEdepPSBvsSEC[2]->GetYaxis()->SetLabelSize(0.05);
-    hEdepPSBvsSEC[2]->GetXaxis()->SetRangeUser(0.0010,0.7);
+    hEdepPSBvsSEC[2]->GetXaxis()->SetRangeUser(0.0010,0.5);
     hEdepPSBvsSEC[2]->GetYaxis()->SetRangeUser(0.00015,0.012);
     hEdepPSBvsSEC[2]->GetZaxis()->SetLabelSize(0.05);
+    hEdepPSBvsSEC[2]->GetXaxis()->SetNdivisions(5,5,0, kTRUE);
     //hEdepPSBvsSEC[2]->SetMaximum(8000.);
     //hEdepPSBvsSEC[2]->RebinX(2);
     //hEdepPSBvsSEC[2]->RebinY(2);
     //gPad->SetLogz();
     hEdepPSBvsSEC[2]->Draw("colz");
 
-    TPaveText *pt03 = new TPaveText(0., 0.010, 0.499, 0.012);
+    TPaveText *pt03 = new TPaveText(0., 0.010, 0.315, 0.012);
     TText *t03 = pt03->AddText("WMC: pd #rightarrow d#pi^{+}n_{sp}");
     pt03->SetFillColor(19);
     t03->SetTextSize(0.06);
-    pt03->Draw();
+    t03->SetTextFont(42);
+    //pt03->Draw();
 
     TPaveText *pt030 = new TPaveText(0.1, 0.008, 0.1, 0.008,"DEUTERON");
     pt030->SetTextSize(0.06);
@@ -238,11 +254,18 @@ void drawHistograms_pl() {
     //pt030->Draw("same");
     pt031->Draw("same");
 
+    TLegend *MyLegend02 = new TLegend(0.385, 0.815, 0.855, 0.885);
+    MyLegend02->SetFillStyle(1001); MyLegend02->SetFillColor(19); MyLegend02->SetLineColor(1); MyLegend02->SetBorderSize(5);
+    MyLegend02->SetTextSize(0.04);
+    MyLegend02->AddEntry((TObject*)0, "WMC: pd #rightarrow d#pi^{+}n_{sp}", "");
+    //MyLegend02->AddEntry(line020, "\\hbox{cięcie}", "l");
+    MyLegend02->Draw();
+
     MyCanvas03->Print("output/plots/hEdepPSBvsSEC_pi_pl.png","png");
     MyCanvas03->Print("output/plots/hEdepPSBvsSEC_pi_pl.eps","eps");
 
     //
-    TCanvas* MyCanvas04 = new TCanvas("MyCanvas04","",600,550);
+    TCanvas* MyCanvas04 = new TCanvas("MyCanvas04","",465,500);
 
     hThetaFDvsThetaCD[0]->GetXaxis()->SetTitle("#theta_{FD},#circ");
     hThetaFDvsThetaCD[0]->GetYaxis()->SetTitle("#theta_{CD},#circ");
@@ -275,7 +298,7 @@ void drawHistograms_pl() {
     TText *t04 = pt04->AddText("Dane eksperymentalne");
     pt04->SetFillColor(19);
     t04->SetTextSize(0.06);
-    pt04->Draw();
+    //pt04->Draw();
 
     TPaveText *pt040 = new TPaveText(16., 65., 16., 65.,"A");
     pt040->SetTextSize(0.05);
@@ -301,11 +324,18 @@ void drawHistograms_pl() {
     pt042->AddText("c");
     pt042->Draw("same");
 
+    TLegend *MyLegend04 = new TLegend(0.385, 0.770, 0.855, 0.885);
+    MyLegend04->SetFillStyle(1001); MyLegend04->SetFillColor(19); MyLegend04->SetLineColor(1); MyLegend04->SetBorderSize(5);
+    MyLegend04->SetTextSize(0.04);
+    MyLegend04->AddEntry((TObject*)0, "Dane eksperyment.", "");
+    MyLegend04->AddEntry(line040, "\\hbox{cięcie}", "l");
+    MyLegend04->Draw();
+
     MyCanvas04->Print("output/plots/hThetaFDvsThetaCD_DATA_pl.png","png");
     MyCanvas04->Print("output/plots/hThetaFDvsThetaCD_DATA_pl.eps","eps");
 
     //
-    TCanvas* MyCanvas05 = new TCanvas("MyCanvas05","",600,550);
+    TCanvas* MyCanvas05 = new TCanvas("MyCanvas05","",465,500);
 
     hThetaFDvsThetaCD[1]->GetXaxis()->SetTitle("#theta_{FD},#circ");
     hThetaFDvsThetaCD[1]->GetYaxis()->SetTitle("#theta_{CD},#circ");
@@ -338,13 +368,20 @@ void drawHistograms_pl() {
     TText *t05 = pt05->AddText("WMC: pd #rightarrow ppn_{sp}");
     pt05->SetFillColor(19);
     t05->SetTextSize(0.06);
-    pt05->Draw();
+    //pt05->Draw();
+
+    TLegend *MyLegend05 = new TLegend(0.385, 0.770, 0.855, 0.885);
+    MyLegend05->SetFillStyle(1001); MyLegend05->SetFillColor(19); MyLegend05->SetLineColor(1); MyLegend05->SetBorderSize(5);
+    MyLegend05->SetTextSize(0.04);
+    MyLegend05->AddEntry((TObject*)0, "WMC: pd #rightarrow ppn_{sp}", "");
+    MyLegend05->AddEntry(line050, "\\hbox{cięcie}", "l");
+    MyLegend05->Draw();
 
     MyCanvas05->Print("output/plots/hThetaFDvsThetaCD_MC_pl.png","png");
     MyCanvas05->Print("output/plots/hThetaFDvsThetaCD_MC_pl.eps","eps");
 
     //
-    TCanvas* MyCanvas06 = new TCanvas("MyCanvas06","",600,550);
+    TCanvas* MyCanvas06 = new TCanvas("MyCanvas06","",465,500);
 
     hThetaFDvsThetaCD[2]->GetXaxis()->SetTitle("#theta_{FD},#circ");
     hThetaFDvsThetaCD[2]->GetYaxis()->SetTitle("#theta_{CD},#circ");
@@ -382,18 +419,25 @@ void drawHistograms_pl() {
     TLine* line060 = new TLine(3.,40.,18.,40.);
     line060->SetLineColor(kRed);
     line060->SetLineWidth(2);
-    line060->Draw("same");
+    //line060->Draw("same");
 
     TLine* line061 = new TLine(3.,100.,18.,100.);
     line061->SetLineColor(kRed);
     line061->SetLineWidth(2);
-    line061->Draw("same");
+    //line061->Draw("same");
 
     TPaveText *pt06 = new TPaveText(3.,150.,12.0,170.);
     TText *t06 = pt06->AddText("WMC: pd #rightarrow pd");
     pt06->SetFillColor(19);
     t06->SetTextSize(0.06);
-    pt06->Draw();
+    //pt06->Draw();
+
+    TLegend *MyLegend06 = new TLegend(0.385, 0.815, 0.855, 0.885);
+    MyLegend06->SetFillStyle(1001); MyLegend06->SetFillColor(19); MyLegend06->SetLineColor(1); MyLegend06->SetBorderSize(5);
+    MyLegend06->SetTextSize(0.04);
+    MyLegend06->AddEntry((TObject*)0, "WMC: pd #rightarrow d#pi^{+}n_{sp}", "");
+    //MyLegend06->AddEntry(line020, "\\hbox{cięcie}", "l");
+    MyLegend06->Draw();
 
     MyCanvas06->Print("output/plots/hThetaFDvsThetaCD_pd_pl.png","png");
     MyCanvas06->Print("output/plots/hThetaFDvsThetaCD_pd_pl.eps","eps");

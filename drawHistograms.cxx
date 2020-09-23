@@ -45,7 +45,7 @@ void drawHistograms() {
     myFile[1] = new TFile("input/MC-ppn_qf-PARIS-x6.root","READ");
     //myFile[1] = new TFile("input/MC-ppn_qf-CDBONN-x6.root","READ");
     myFile[2] = new TFile("input/MC-dnpi_plus_thetacut-x6.root","READ");
-    myFile[3] = new TFile("input/MC-pd-momcut.root","READ");
+    myFile[3] = new TFile("input/MC-pd-momcut3.root","READ");
 
     ///////////////////////////////////////////////
 
@@ -112,7 +112,7 @@ void drawHistograms() {
     TText *t01 = pt01->AddText("Experimental data");
     pt01->SetFillColor(0);
     t01->SetTextSize(0.06);
-    pt01->Draw();
+    //pt01->Draw();
 
     TPaveText *pt010 = new TPaveText(0.05, 0.005, 0.05, 0.005,"PROTON");
     pt010->SetTextSize(0.06);
@@ -163,7 +163,7 @@ void drawHistograms() {
     TText *t02 = pt02->AddText("WMC: pd #rightarrow ppn_{sp}");
     pt02->SetFillColor(0);
     t02->SetTextSize(0.06);
-    pt02->Draw();
+    //pt02->Draw();
 
     TPaveText *pt020 = new TPaveText(0.05, 0.005, 0.05, 0.005,"PROTON");
     pt020->SetTextSize(0.06);
@@ -214,7 +214,7 @@ void drawHistograms() {
     TText *t03 = pt03->AddText("WMC: pd #rightarrow d#pi^{+}n_{sp}");
     pt03->SetFillColor(0);
     t03->SetTextSize(0.06);
-    pt03->Draw();
+    //pt03->Draw();
 
     TPaveText *pt030 = new TPaveText(0.1, 0.008, 0.1, 0.008,"DEUTERON");
     pt030->SetTextSize(0.06);
@@ -244,8 +244,8 @@ void drawHistograms() {
     //
     TCanvas* MyCanvas04=new TCanvas;
 
-    hThetaFDvsThetaCD[0]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[0]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[0]->GetXaxis()->SetTitle("#theta_{FD} [deg]");
+    hThetaFDvsThetaCD[0]->GetYaxis()->SetTitle("#theta_{CD} [deg]");
     hThetaFDvsThetaCD[0]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[0]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[0]->GetXaxis()->SetLabelSize(0.05);
@@ -275,7 +275,7 @@ void drawHistograms() {
     TText *t04 = pt04->AddText("Experimental data");
     pt04->SetFillColor(0);
     t04->SetTextSize(0.06);
-    pt04->Draw();
+    //pt04->Draw();
 
     TPaveText *pt040 = new TPaveText(16., 65., 16., 65.,"A");
     pt040->SetTextSize(0.05);
@@ -301,14 +301,25 @@ void drawHistograms() {
     pt042->AddText("d");
     pt042->Draw("same");
 
+    TPaveText *text_lev01 = new TPaveText(3.8,145.,4.8,160.,"capt");
+    text_lev01->SetTextFont(42); text_lev01->SetTextSize(0.06); //text_lev01->SetTextColor(0);
+    text_lev01->SetTextAlign(22);
+    text_lev01->SetFillStyle(1001);
+    text_lev01->SetShadowColor(0); text_lev01->SetFillColor(0);
+    text_lev01->SetBorderSize(0);
+    text_lev01->AddText("(c)");
+    text_lev01->Draw("");
+
+    //MyCanvas04->GetCanvas()->SetGrayscale();
+
     MyCanvas04->Print("output/plots/hThetaFDvsThetaCD_DATA.png","png");
     MyCanvas04->Print("output/plots/hThetaFDvsThetaCD_DATA.eps","eps");
 
     //
     TCanvas* MyCanvas05=new TCanvas;
 
-    hThetaFDvsThetaCD[1]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[1]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[1]->GetXaxis()->SetTitle("#theta_{FD} [deg]");
+    hThetaFDvsThetaCD[1]->GetYaxis()->SetTitle("#theta_{CD} [deg]");
     hThetaFDvsThetaCD[1]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[1]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[1]->GetXaxis()->SetLabelSize(0.05);
@@ -338,7 +349,18 @@ void drawHistograms() {
     TText *t05 = pt05->AddText("WMC: pd #rightarrow ppn_{sp}");
     pt05->SetFillColor(0);
     t05->SetTextSize(0.06);
-    pt05->Draw();
+    //pt05->Draw();
+
+    TPaveText *text_lev02 = new TPaveText(3.8,145.,4.8,160.,"capt");
+    text_lev02->SetTextFont(42); text_lev02->SetTextSize(0.06);
+    text_lev02->SetTextAlign(22);
+    text_lev02->SetFillStyle(1001);
+    text_lev02->SetShadowColor(0); text_lev02->SetFillColor(0);
+    text_lev02->SetBorderSize(0);
+    text_lev02->AddText("(a)");
+    text_lev02->Draw("");
+
+    //MyCanvas05->GetCanvas()->SetGrayscale();
 
     MyCanvas05->Print("output/plots/hThetaFDvsThetaCD_MC.png","png");
     MyCanvas05->Print("output/plots/hThetaFDvsThetaCD_MC.eps","eps");
@@ -346,8 +368,8 @@ void drawHistograms() {
     //
     TCanvas* MyCanvas06=new TCanvas;
 
-    hThetaFDvsThetaCD[2]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[2]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[2]->GetXaxis()->SetTitle("#theta_{FD} [deg]");
+    hThetaFDvsThetaCD[2]->GetYaxis()->SetTitle("#theta_{CD} [deg]");
     hThetaFDvsThetaCD[2]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[2]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[2]->GetXaxis()->SetLabelSize(0.05);
@@ -393,7 +415,18 @@ void drawHistograms() {
     TText *t06 = pt06->AddText("WMC: pd #rightarrow pd");
     pt06->SetFillColor(0);
     t06->SetTextSize(0.06);
-    pt06->Draw();
+    //pt06->Draw();
+
+    TPaveText *text_lev03 = new TPaveText(3.8,145.,4.8,160.,"capt");
+    text_lev03->SetTextFont(42); text_lev03->SetTextSize(0.06);
+    text_lev03->SetTextAlign(22);
+    text_lev03->SetFillStyle(1001);
+    text_lev03->SetShadowColor(0); text_lev03->SetFillColor(0);
+    text_lev03->SetBorderSize(0);
+    text_lev03->AddText("(b)");
+    text_lev03->Draw("");
+
+    //MyCanvas06->GetCanvas()->SetGrayscale();
 
     MyCanvas06->Print("output/plots/hThetaFDvsThetaCD_pd.png","png");
     MyCanvas06->Print("output/plots/hThetaFDvsThetaCD_pd.eps","eps");
