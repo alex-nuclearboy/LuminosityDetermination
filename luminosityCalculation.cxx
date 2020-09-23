@@ -5,7 +5,7 @@
 * This software is distributed under the terms
   of the GNU General Public Licence v3.0
 *
-* Modified 2020-05
+* Modified 2020-09
 ***********************************************/
 
 //Macro to determine the luminosity for the proton-deutron collisions using quasi-free proton-proton scattering with WASA-at-COSY facility
@@ -641,11 +641,11 @@ void luminosityCalculation(){
     double maxY03 = 1.2*(hLuminosity->GetMaximum());
 
     hLuminosity_syst->SetTitle("Luminosity");
-    hLuminosity_syst->GetXaxis()->SetTitle("excess energy, MeV");
+    hLuminosity_syst->GetXaxis()->SetTitle("excess energy [MeV]");
     hLuminosity_syst->GetXaxis()->SetTitleOffset(1.);
     hLuminosity_syst->GetXaxis()->SetTitleSize(0.06);
     hLuminosity_syst->GetXaxis()->SetLabelSize(0.05);
-    hLuminosity_syst->GetYaxis()->SetTitle("integrated luminosity, nb^{-1}");
+    hLuminosity_syst->GetYaxis()->SetTitle("integrated luminosity [nb^{-1}]");
     hLuminosity_syst->GetYaxis()->SetTitleOffset(0.8);
     hLuminosity_syst->GetYaxis()->SetTitleSize(0.06);
     hLuminosity_syst->GetYaxis()->SetLabelSize(0.05);
@@ -654,7 +654,7 @@ void luminosityCalculation(){
 
     hLuminosity_syst->SetLineWidth(1);
     hLuminosity_syst->SetLineColor(2);
-    hLuminosity_syst->SetMarkerStyle(2);
+    hLuminosity_syst->SetMarkerStyle(1);
     hLuminosity_syst->SetMarkerColor(2);
     hLuminosity_syst->SetMarkerSize(1);
     //hLuminosity_syst->SetFillStyle(3345);
@@ -675,10 +675,10 @@ void luminosityCalculation(){
 
     TString Param[4];
 
-    Param[0]=Form("a = (%.2f #pm %.2f)#upoint10^{-5} nb^{-1}#upointMeV^{-3}",P[0],errP[0]);
-    Param[1]=Form("b = (%.2f #pm %.2f)#upoint10^{-4} nb^{-1}#upointMeV^{-2}",P[1],errP[1]);
-    Param[2]=Form("c = (%.2f #pm %.2f)#upoint10^{-2} nb^{-1}#upointMeV^{-1}",P[2],errP[2]);
-    Param[3]=Form("d = (%.2f #pm %.2f) nb^{-1}",P[3],errP[3]);
+    Param[0]=Form("a = (%.2f #pm %.2f)#upoint10^{-5} [nb^{-1}#upointMeV^{-3}]",P[0],errP[0]);
+    Param[1]=Form("b = (%.2f #pm %.2f)#upoint10^{-4} [nb^{-1}#upointMeV^{-2}]",P[1],errP[1]);
+    Param[2]=Form("c = (%.2f #pm %.2f)#upoint10^{-2} [nb^{-1}#upointMeV^{-1}]",P[2],errP[2]);
+    Param[3]=Form("d = (%.2f #pm %.2f) [nb^{-1}]",P[3],errP[3]);
 
     TLegend *legend03 = new TLegend(0.150, 0.345, 0.480, 0.575);
     legend03->SetFillStyle(1); legend03->SetFillColor(0); legend03->SetLineColor(0); legend03->SetTextSize(0.04);
@@ -690,7 +690,7 @@ void luminosityCalculation(){
     legend03->Draw("same");
 
     TPaveText *descr = new TPaveText(-19.,11.6,27.3,45.4);
-    TText *tl01 = descr->AddText(Form("L = (%.0f #pm %.0f #pm %.0f #pm %.0f) nb^{-1}",luminosityTotal,errStatLuminTotal,errSystLuminTotal,0.04*luminosityTotal));
+    TText *tl01 = descr->AddText(Form("L = (%.0f #pm %.0f #pm %.0f #pm %.0f) [nb^{-1}]",luminosityTotal,errStatLuminTotal,errSystLuminTotal,0.04*luminosityTotal));
     TText *tl02 = descr->AddText(Param[0]);
     TText *tl03 = descr->AddText(Param[1]);
     TText *tl04 = descr->AddText(Param[2]);
@@ -712,6 +712,15 @@ void luminosityCalculation(){
     tl04->SetTextAlign(12);
     tl05->SetTextAlign(12);
     descr->Draw("same");
+
+    TPaveText *text_lev01 = new TPaveText(-62.,67.,-62.,67.,"capt");
+    text_lev01->SetTextFont(42); text_lev01->SetTextSize(0.06);
+    text_lev01->SetTextAlign(22);
+    text_lev01->SetFillStyle(0);
+    text_lev01->SetShadowColor(0); text_lev01->SetFillColor(0);
+    text_lev01->SetBorderSize(0);
+    text_lev01->AddText("(b)");
+    text_lev01->Draw();
 
     MyCanvas03->Print("output/plots/hLuminosity.png","png");
     MyCanvas03->Print("output/plots/hLuminosity.eps","eps");
