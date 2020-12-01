@@ -45,7 +45,7 @@ void drawHistograms() {
     myFile[1] = new TFile("input/MC-ppn_qf-PARIS-x6.root","READ");
     //myFile[1] = new TFile("input/MC-ppn_qf-CDBONN-x6.root","READ");
     myFile[2] = new TFile("input/MC-dnpi_plus_thetacut-x6.root","READ");
-    myFile[3] = new TFile("input/MC-pd-momcut3.root","READ");
+    myFile[3] = new TFile("input/MC-pd-momcut.root","READ");
 
     ///////////////////////////////////////////////
 
