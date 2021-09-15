@@ -118,7 +118,7 @@ void ThetaCD_fit_Q23() {
         for(Int_t j = 1; j < 181; j++) {
             bin_content = hThetaCD_DATA_i[i]->GetBinContent(j);
 
-            if((i == 12)) {
+            if(i == 12) {
                 hThetaCD_DATA_bkgnd_i[i]->SetBinContent(j,bin_content);
             }
             else {
@@ -208,15 +208,9 @@ void ThetaCD_fit_Q23() {
 
         hThetaCD_MC->Add(hThetaCD_MC_i[i]);
 
-        //new file with results
-        ofstream results;
-        results.open(Form("files/ThetaCD_Q%d.dat",q), ios::app);
-        results<<Form("%i %g %g %g %g",i,Integral_DATA,Integral_signal,Integral_bkgnd,(Integral_bkgnd/Integral_DATA)*100)<<endl;
-        results.close();
-
     }
 
-    cout<<"background for Q ("<<-70.+(q-1)*2.5<<","<<-67.5+(q-1)*2.5<<") MeV is equal to "<<(hThetaCD_DATA_bkgnd->Integral()/hThetaCD_DATA->Integral())*100<<"%"<<endl;
+    //cout<<"background for Q ("<<-70.+(q-1)*2.5<<","<<-67.5+(q-1)*2.5<<") MeV is equal to "<<(hThetaCD_DATA_bkgnd->Integral()/hThetaCD_DATA->Integral())*100<<"%"<<endl;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -231,6 +225,8 @@ void ThetaCD_fit_Q23() {
     gStyle->SetLabelFont(62,"XYZ");
 
     //draw histograms on separated canvas
+    TLine* MyLine010;
+    TLine* MyLine011;
 
     TCanvas* MyCanvas01 = new TCanvas; //create Canvas
 
@@ -265,7 +261,7 @@ void ThetaCD_fit_Q23() {
 
         hThetaCD_DATA_k[j]->SetLineColor(kOrange+1);
         hThetaCD_DATA_k[j]->SetLineStyle(1);
-        hThetaCD_DATA_k[j]->SetLineWidth(2);
+        hThetaCD_DATA_k[j]->SetLineWidth(1);
         hThetaCD_DATA_k[j]->Draw("same C");
 
         hThetaCD_MC_i[j]->SetLineColor(kAzure-3);
@@ -314,13 +310,13 @@ void ThetaCD_fit_Q23() {
         backgroundFunct_end[j]->SetLineWidth(2);
         //backgroundFunct_end[j]->Draw("same C");
 
-        TLine* MyLine010 = new TLine(40.,0.,40.,Ymax01);
+        MyLine010 = new TLine(40.,0.,40.,Ymax01);
         MyLine010->SetLineColor(2);
         MyLine010->SetLineStyle(1);
         MyLine010->SetLineWidth(1);
         MyLine010->Draw("same");
 
-        TLine* MyLine011 = new TLine(100.,0.,100.,Ymax01);
+        MyLine011 = new TLine(100.,0.,100.,Ymax01);
         MyLine011->SetLineColor(2);
         MyLine011->SetLineStyle(1);
         MyLine011->SetLineWidth(1);
