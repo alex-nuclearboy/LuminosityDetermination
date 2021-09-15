@@ -252,16 +252,23 @@ void diffCrossSection_pp() {
     //
     TCanvas* MyCanvas01a = new TCanvas;
 
-    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{efektywny pęd wiązki, GeV/c}");
-    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{p}_{\\hbox{wiązki}}^{\\hbox{ef}}, \\hbox{GeV/c}");
+    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{efektywny pęd wiązki [GeV/c]}");
+    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{p}_{\\hbox{wiązki}}^{\\hbox{ef}}, \\hbox{[GeV/c]}");
     hBeam_momentum_eff->DrawCopy("C");
 
-    gXS[35]->Draw("same");
-    gXS[41]->Draw("same");
-    gXS[55]->Draw("same");
-    gXS[75]->Draw("same");
-    gXS[89]->Draw("same");
-    gXS[150]->Draw("same");
+    gXS[35]->SetLineStyle(1);
+    gXS[41]->SetLineStyle(1);
+    gXS[55]->SetLineStyle(1);
+    gXS[75]->SetLineStyle(1);
+    gXS[89]->SetLineStyle(1);
+    gXS[150]->SetLineStyle(1);
+
+    gXS[35]->Draw("same C");
+    gXS[41]->Draw("same C");
+    gXS[55]->Draw("same C");
+    gXS[75]->Draw("same C");
+    gXS[89]->Draw("same C");
+    gXS[150]->Draw("same C");
 
     XS_graph[35]->Draw("same p");
     XS_graph[41]->Draw("same p");
