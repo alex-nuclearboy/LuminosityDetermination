@@ -79,7 +79,7 @@ void drawHistograms_pl() {
     ////
     gStyle->SetOptStat(kFALSE);
     gStyle->SetPalette(1,0);
-    gStyle->SetPadLeftMargin(0.17);
+    gStyle->SetPadLeftMargin(0.18);
     gStyle->SetPadRightMargin(0.133);
     gStyle->SetPadBottomMargin(0.15);
     gStyle->SetPadTopMargin(0.1);
@@ -91,8 +91,8 @@ void drawHistograms_pl() {
 
     TCanvas* MyCanvas01 = new TCanvas("MyCanvas01","",465,500);
 
-    hEdepPSBvsSEC[0]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
-    hEdepPSBvsSEC[0]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
+    hEdepPSBvsSEC[0]->GetXaxis()->SetTitle("#DeltaE(SEC) [GeV]");
+    hEdepPSBvsSEC[0]->GetYaxis()->SetTitle("#DeltaE(PSB) [GeV]");
     hEdepPSBvsSEC[0]->GetXaxis()->SetTitleSize(0.06);
     hEdepPSBvsSEC[0]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[0]->GetXaxis()->SetLabelSize(0.05);
@@ -149,8 +149,8 @@ void drawHistograms_pl() {
     //
     TCanvas* MyCanvas02 = new TCanvas("MyCanvas02","",465,500);
 
-    hEdepPSBvsSEC[1]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
-    hEdepPSBvsSEC[1]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
+    hEdepPSBvsSEC[1]->GetXaxis()->SetTitle("#DeltaE(SEC) [GeV]");
+    hEdepPSBvsSEC[1]->GetYaxis()->SetTitle("#DeltaE(PSB) [GeV]");
     hEdepPSBvsSEC[1]->GetXaxis()->SetTitleSize(0.06);
     hEdepPSBvsSEC[1]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[1]->GetXaxis()->SetLabelSize(0.05);
@@ -207,18 +207,18 @@ void drawHistograms_pl() {
     //
     TCanvas* MyCanvas03 = new TCanvas("MyCanvas03","",465,500);
 
-    hEdepPSBvsSEC[2]->GetXaxis()->SetTitle("#DeltaE(SEC), GeV");
-    hEdepPSBvsSEC[2]->GetYaxis()->SetTitle("#DeltaE(PSB), GeV");
+    hEdepPSBvsSEC[2]->GetXaxis()->SetTitle("#DeltaE(SEC) [GeV]");
+    hEdepPSBvsSEC[2]->GetYaxis()->SetTitle("#DeltaE(PSB) [GeV]");
     hEdepPSBvsSEC[2]->GetXaxis()->SetTitleSize(0.06);
     hEdepPSBvsSEC[2]->GetXaxis()->SetTitleOffset(1.0);
     hEdepPSBvsSEC[2]->GetXaxis()->SetLabelSize(0.05);
     hEdepPSBvsSEC[2]->GetYaxis()->SetTitleSize(0.06);
     hEdepPSBvsSEC[2]->GetYaxis()->SetTitleOffset(1.55);
     hEdepPSBvsSEC[2]->GetYaxis()->SetLabelSize(0.05);
-    hEdepPSBvsSEC[2]->GetXaxis()->SetRangeUser(0.0010,0.5);
+    hEdepPSBvsSEC[2]->GetXaxis()->SetRangeUser(0.0010,0.7);
     hEdepPSBvsSEC[2]->GetYaxis()->SetRangeUser(0.00015,0.012);
     hEdepPSBvsSEC[2]->GetZaxis()->SetLabelSize(0.05);
-    hEdepPSBvsSEC[2]->GetXaxis()->SetNdivisions(5,5,0, kTRUE);
+    //hEdepPSBvsSEC[2]->GetXaxis()->SetNdivisions(5,5,0, kTRUE);
     //hEdepPSBvsSEC[2]->SetMaximum(8000.);
     //hEdepPSBvsSEC[2]->RebinX(2);
     //hEdepPSBvsSEC[2]->RebinY(2);
@@ -267,8 +267,8 @@ void drawHistograms_pl() {
     //
     TCanvas* MyCanvas04 = new TCanvas("MyCanvas04","",465,500);
 
-    hThetaFDvsThetaCD[0]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[0]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[0]->GetXaxis()->SetTitle("#theta_{FD} [#circ]");
+    hThetaFDvsThetaCD[0]->GetYaxis()->SetTitle("#theta_{CD} [#circ]");
     hThetaFDvsThetaCD[0]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[0]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[0]->GetXaxis()->SetLabelSize(0.05);
@@ -337,8 +337,8 @@ void drawHistograms_pl() {
     //
     TCanvas* MyCanvas05 = new TCanvas("MyCanvas05","",465,500);
 
-    hThetaFDvsThetaCD[1]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[1]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[1]->GetXaxis()->SetTitle("#theta_{FD} [#circ]");
+    hThetaFDvsThetaCD[1]->GetYaxis()->SetTitle("#theta_{CD} [#circ]");
     hThetaFDvsThetaCD[1]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[1]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[1]->GetXaxis()->SetLabelSize(0.05);
@@ -383,8 +383,8 @@ void drawHistograms_pl() {
     //
     TCanvas* MyCanvas06 = new TCanvas("MyCanvas06","",465,500);
 
-    hThetaFDvsThetaCD[2]->GetXaxis()->SetTitle("#theta_{FD},#circ");
-    hThetaFDvsThetaCD[2]->GetYaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaFDvsThetaCD[2]->GetXaxis()->SetTitle("#theta_{FD} [#circ]");
+    hThetaFDvsThetaCD[2]->GetYaxis()->SetTitle("#theta_{CD} [#circ]");
     hThetaFDvsThetaCD[2]->GetXaxis()->SetTitleSize(0.06);
     hThetaFDvsThetaCD[2]->GetXaxis()->SetTitleOffset(1.);
     hThetaFDvsThetaCD[2]->GetXaxis()->SetLabelSize(0.05);
