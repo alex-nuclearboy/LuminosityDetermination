@@ -253,7 +253,7 @@ void diffCrossSection_pp() {
     TCanvas* MyCanvas01a = new TCanvas;
 
     hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{efektywny pęd wiązki [GeV/c]}");
-    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{p}_{\\hbox{wiązki}}^{\\hbox{ef}}, \\hbox{[GeV/c]}");
+    hBeam_momentum_eff->GetXaxis()->SetTitle("\\hbox{p}_{\\hbox{wiązki}}^{\\hbox{ef}} \\hbox{ [GeV/c]}");
     hBeam_momentum_eff->DrawCopy("C");
 
     gXS[35]->SetLineStyle(1);
