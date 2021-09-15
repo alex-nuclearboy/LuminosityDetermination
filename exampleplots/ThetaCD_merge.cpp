@@ -285,9 +285,9 @@ void ThetaCD_merge() {
     hThetaCD_DATA->SetMarkerSize(0.);
     hThetaCD_DATA->Draw("p");
 
-    hThetaCD_DATA_sign_cut->SetLineColor(kOrange+7);
+    hThetaCD_DATA_sign_cut->SetLineColor(kOrange+1);
     hThetaCD_DATA_sign_cut->SetFillStyle(3354);
-    hThetaCD_DATA_sign_cut->SetFillColor(kOrange+7);
+    hThetaCD_DATA_sign_cut->SetFillColor(kOrange+1);
     hThetaCD_DATA_sign_cut->SetLineWidth(1);
     hThetaCD_DATA_sign_cut->Draw("same LF2");
 
@@ -465,5 +465,3 @@ void ThetaCD_merge() {
     MyCanvas03->Print("hExcessEnergy.png","png");
 
 }
-
-

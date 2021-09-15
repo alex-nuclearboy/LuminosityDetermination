@@ -277,9 +277,9 @@ void ThetaCD_fit_Q23() {
         hThetaCD_MC_i[j]->Scale(scaleMC01);
         //hThetaCD_MC_i[j]->Draw("same E1");
 
-        hThetaCD_DATA_sign_i[j]->SetLineColor(kOrange+7);
+        hThetaCD_DATA_sign_i[j]->SetLineColor(kOrange+1);
         hThetaCD_DATA_sign_i[j]->SetFillStyle(3354);
-        hThetaCD_DATA_sign_i[j]->SetFillColor(kOrange+7);
+        hThetaCD_DATA_sign_i[j]->SetFillColor(kOrange+1);
         hThetaCD_DATA_sign_i[j]->SetLineWidth(1);
         hThetaCD_DATA_sign_i[j]->Draw("same LF2");
 
