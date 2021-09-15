@@ -267,7 +267,6 @@ void luminosityCalculation(){
     Double_t errStatLuminPart[3];
     Double_t errStatLumin;
     Double_t errStatLuminSq = 0.;
-    Double_t errStatLuminTotal;
 
     //for systematics
     Double_t Ndata,Nbkgr;
@@ -449,10 +448,10 @@ void luminosityCalculation(){
     //
     TCanvas* MyCanvas00 = new TCanvas;
 
-    double maxY00 = 1.2*(hExcessEnergy_DATA_accept[0]->GetMaximum());
+    Double_t maxY00 = 1.2*(hExcessEnergy_DATA_accept[0]->GetMaximum());
 
     hExcessEnergy_DATA_accept[0]->SetTitle("Accepted experimental events");
-    hExcessEnergy_DATA_accept[0]->GetXaxis()->SetTitle("excess energy, MeV");
+    hExcessEnergy_DATA_accept[0]->GetXaxis()->SetTitle("excess energy [MeV]");
     hExcessEnergy_DATA_accept[0]->GetXaxis()->SetTitleOffset(1.);
     hExcessEnergy_DATA_accept[0]->GetXaxis()->SetTitleSize(0.06);
     hExcessEnergy_DATA_accept[0]->GetXaxis()->SetLabelSize(0.05);
@@ -521,10 +520,10 @@ void luminosityCalculation(){
     //
     TCanvas* MyCanvas01 = new TCanvas;
 
-    double maxY01 = 1.2*(hGenerated_WMC[0]->GetMaximum());
+    Double_t maxY01 = 1.2*(hGenerated_WMC[0]->GetMaximum());
 
     hGenerated_WMC[0]->SetTitle("Generated events");
-    hGenerated_WMC[0]->GetXaxis()->SetTitle("excess energy, MeV");
+    hGenerated_WMC[0]->GetXaxis()->SetTitle("excess energy [MeV]");
     hGenerated_WMC[0]->GetXaxis()->SetTitleOffset(1.);
     hGenerated_WMC[0]->GetXaxis()->SetTitleSize(0.06);
     hGenerated_WMC[0]->GetXaxis()->SetLabelSize(0.05);
@@ -561,10 +560,10 @@ void luminosityCalculation(){
     //
     TCanvas* MyCanvas02 = new TCanvas;
 
-    double maxY02 = 1.2*(hExcessEnergy_WMC_XS[0]->GetMaximum());
+    Double_t maxY02 = 1.2*(hExcessEnergy_WMC_XS[0]->GetMaximum());
 
     hExcessEnergy_WMC_XS[0]->SetTitle("Accepted and weighted simulated events");
-    hExcessEnergy_WMC_XS[0]->GetXaxis()->SetTitle("excess energy, MeV");
+    hExcessEnergy_WMC_XS[0]->GetXaxis()->SetTitle("excess energy [MeV]");
     hExcessEnergy_WMC_XS[0]->GetXaxis()->SetTitleOffset(1.);
     hExcessEnergy_WMC_XS[0]->GetXaxis()->SetTitleSize(0.06);
     hExcessEnergy_WMC_XS[0]->GetXaxis()->SetLabelSize(0.05);
@@ -638,7 +637,7 @@ void luminosityCalculation(){
     //
     TCanvas* MyCanvas03 = new TCanvas;
 
-    double maxY03 = 1.2*(hLuminosity->GetMaximum());
+    Double_t maxY03 = 1.2*(hLuminosity->GetMaximum());
 
     hLuminosity_syst->SetTitle("Luminosity");
     hLuminosity_syst->GetXaxis()->SetTitle("excess energy [MeV]");
@@ -654,7 +653,7 @@ void luminosityCalculation(){
 
     hLuminosity_syst->SetLineWidth(1);
     hLuminosity_syst->SetLineColor(2);
-    hLuminosity_syst->SetMarkerStyle(1);
+    hLuminosity_syst->SetMarkerStyle(2);
     hLuminosity_syst->SetMarkerColor(2);
     hLuminosity_syst->SetMarkerSize(1);
     //hLuminosity_syst->SetFillStyle(3345);
@@ -728,20 +727,18 @@ void luminosityCalculation(){
     //
     TCanvas* MyCanvas03a = new TCanvas;
 
-    double maxY03 = 1.2*(hLuminosity->GetMaximum());
-
-    hLuminosity_syst->SetTitle();
-    hLuminosity_syst->GetXaxis()->SetTitle("\\hbox{energia dostępna, MeV}");
-    hLuminosity_syst->GetYaxis()->SetTitle("\\hbox{świetlność całkowita, } \\hbox{nb}^{\\hbox{-1}}");
+    hLuminosity_syst->SetTitle("");
+    hLuminosity_syst->GetXaxis()->SetTitle("\\hbox{energia dostępna [MeV]}");
+    hLuminosity_syst->GetYaxis()->SetTitle("\\hbox{świetlność całkowita [} \\hbox{nb}^{\\hbox{-1}}\\hbox{]}");
     hLuminosity_syst->Draw("E1");
     hLuminosity->Draw("same E1");
     fitLum->Draw("same C");
 
-    TLegend *legend03a = new TLegend(0.535, 0.385, 0.885, 0.615);
+    TLegend *legend03a = new TLegend(0.425, 0.385, 0.885, 0.615);
     legend03a->SetFillStyle(1001); legend03a->SetFillColor(19); legend03a->SetLineColor(1); legend03a->SetTextSize(0.04); legend03a->SetBorderSize(5);
     legend03a->AddEntry( hLuminosity, "\\hbox{świetlność}", "pe");
-    legend03a->AddEntry( hLuminosity_syst, "\\hbox{błędy systematyczne}", "pe");
-    legend03a->AddEntry( fitLum, "funkcja dopasowania", "l");
+    legend03a->AddEntry( hLuminosity_syst, "\\hbox{niepewności systematyczne}", "pe");
+    legend03a->AddEntry( fitLum, "dopasowana funkcja", "l");
     legend03a->AddEntry((TObject*)0, "aQ^{3} + bQ^{2} + cQ + d", "");
     legend03a->Draw();
 
@@ -755,8 +752,8 @@ void luminosityCalculation(){
 
     for(Int_t i = 1; i < 41; i++) {
 
-        hDeltaPhi_Q[0][i]->SetTitle(Form("Q #in (%G,%G) GeV",-70.+(i-1)*2.5,-67.5+(i-1)*2.5));
-        hDeltaPhi_Q[0][i]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+        hDeltaPhi_Q[0][i]->SetTitle(Form("Q #in (%G,%G) MeV",-70.+(i-1)*2.5,-67.5+(i-1)*2.5));
+        hDeltaPhi_Q[0][i]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [deg]");
         hDeltaPhi_Q[0][i]->GetYaxis()->SetTitle("counts");
         hDeltaPhi_Q[0][i]->GetXaxis()->SetTitleSize(0.06);
         hDeltaPhi_Q[0][i]->GetXaxis()->SetTitleOffset(1.0);
@@ -799,8 +796,8 @@ void luminosityCalculation(){
 
     for(Int_t i = 1; i < 41; i++) {
 
-        hDeltaPhi_Q[0][i]->SetTitle(Form("Q #in (%G,%G) GeV",-70.+(i-1)*2.5,-67.5+(i-1)*2.5));
-        hDeltaPhi_Q[0][i]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+        hDeltaPhi_Q[0][i]->SetTitle(Form("Q #in (%G,%G) MeV",-70.+(i-1)*2.5,-67.5+(i-1)*2.5));
+        hDeltaPhi_Q[0][i]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [#circ]");
         hDeltaPhi_Q[0][i]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
         hDeltaPhi_Q[0][i]->Draw("C");
 
@@ -810,7 +807,7 @@ void luminosityCalculation(){
         TLegend *legend04a = new TLegend(0.535, 0.700, 0.890, 0.885);
         legend04a->SetFillStyle(1001); legend04a->SetFillColor(19); legend04a->SetLineColor(1); legend04a->SetTextSize(0.04); legend04a->SetBorderSize(5);
         legend04a->AddEntry( hDeltaPhi_Q[0][i], "dane eksperymentalne", "l");
-        legend04a->AddEntry( fitBkgnd[0][i], "funkcja dopasowania", "l");
+        legend04a->AddEntry( fitBkgnd[0][i], "dopasowana funkcja", "l");
         legend04a->AddEntry( hDeltaPhi_clear_Q[0][i], "\\hbox{sygnał}", "f");
         legend04a->Draw();
 
@@ -823,7 +820,7 @@ void luminosityCalculation(){
     TCanvas* MyCanvas05=new TCanvas;
 
     hDeltaPhi[0]->SetTitle("Complanarity");
-    hDeltaPhi[0]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi[0]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [deg]");
     hDeltaPhi[0]->GetXaxis()->SetTitleOffset(0.9);
     hDeltaPhi[0]->GetXaxis()->SetTitleSize(0.06);
     hDeltaPhi[0]->GetXaxis()->SetLabelSize(0.05);
@@ -860,7 +857,7 @@ void luminosityCalculation(){
     TCanvas* MyCanvas05a=new TCanvas;
 
     hDeltaPhi[0]->SetTitle("");
-    hDeltaPhi[0]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi[0]->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [#circ]");
     hDeltaPhi[0]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
     hDeltaPhi[0]->Draw("C");
 
@@ -879,7 +876,7 @@ void luminosityCalculation(){
     TCanvas* MyCanvas06=new TCanvas;
 
     //hDeltaPhi_MC->SetTitle("Complanarity");
-    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [deg]");
     hDeltaPhi_MC->GetXaxis()->SetTitleOffset(0.9);
     hDeltaPhi_MC->GetXaxis()->SetTitleSize(0.06);
     hDeltaPhi_MC->GetXaxis()->SetLabelSize(0.05);
@@ -908,7 +905,7 @@ void luminosityCalculation(){
     TCanvas* MyCanvas06a=new TCanvas;
 
     hDeltaPhi_MC->SetTitle("");
-    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi,#circ");
+    hDeltaPhi_MC->GetXaxis()->SetTitle("(2#pi + #Delta#phi)mod2#pi [#circ]");
     hDeltaPhi_MC->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
     hDeltaPhi_MC->Draw("LF2");
 
