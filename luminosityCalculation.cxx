@@ -769,9 +769,9 @@ void luminosityCalculation(){
         hDeltaPhi_Q[0][i]->SetMarkerStyle(2);
         hDeltaPhi_Q[0][i]->Draw("C");
 
-        hDeltaPhi_clear_Q[0][i]->SetLineColor(kOrange+7);
+        hDeltaPhi_clear_Q[0][i]->SetLineColor(kOrange+1);
         hDeltaPhi_clear_Q[0][i]->SetLineWidth(1);
-        hDeltaPhi_clear_Q[0][i]->SetFillColor(kOrange+7);
+        hDeltaPhi_clear_Q[0][i]->SetFillColor(kOrange+1);
         hDeltaPhi_clear_Q[0][i]->SetFillStyle(3354);
         hDeltaPhi_clear_Q[0][i]->Draw("same LF2");
 
@@ -839,8 +839,8 @@ void luminosityCalculation(){
     hDeltaPhi[0]->Draw("C");
 
     hDeltaPhi_clear[0]->SetLineWidth(1);
-    hDeltaPhi_clear[0]->SetLineColor(kOrange+7);
-    hDeltaPhi_clear[0]->SetFillColor(kOrange+7);
+    hDeltaPhi_clear[0]->SetLineColor(kOrange+1);
+    hDeltaPhi_clear[0]->SetFillColor(kOrange+1);
     hDeltaPhi_clear[0]->SetFillStyle(3354);
     hDeltaPhi_clear[0]->Draw("same LF2");
 
