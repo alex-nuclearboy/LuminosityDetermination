@@ -244,7 +244,7 @@ void ThetaCD_fit_Q23() {
         TString descr01 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G, %G) deg",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
 
         hThetaCD_DATA_j[j]->SetTitle(descr01);
-        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD} (deg)");
+        hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta_{CD} [deg]");
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleOffset(1.);
         hThetaCD_DATA_j[j]->GetXaxis()->SetTitleSize(0.06);
         hThetaCD_DATA_j[j]->GetXaxis()->SetLabelSize(0.05);
@@ -347,7 +347,11 @@ void ThetaCD_fit_Q23() {
 
     for (Int_t j = 12; j < 13; j++) {
 
-        hThetaCD_DATA_j[j]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
+	TString descr02 = Form("Q #in (%G,%G) MeV, #theta_{FD} #in (%G#circ, %G#circ)",-70.+(q-1)*2.5,-67.5+(q-1)*2.5,3.+(j-1),4.+(j-1));
+
+	hThetaCD_DATA_j[j]->SetTitle(descr02);
+	hThetaCD_DATA_j[j]->GetXaxis()->SetTitle("#theta [#circ]");
+	hThetaCD_DATA_j[j]->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
         hThetaCD_DATA_j[j]->Draw("pE1");
 
         hThetaCD_DATA_k[j]->Draw("same C");
@@ -368,7 +372,7 @@ void ThetaCD_fit_Q23() {
         TLegend *MyLegend02= new TLegend(0.520, 0.560, 0.885, 0.885);
         MyLegend02->SetFillStyle(1001); MyLegend02->SetFillColor(19); MyLegend02->SetLineColor(1); MyLegend02->SetTextSize(0.04); MyLegend02->SetBorderSize(5);
         MyLegend02->AddEntry(hThetaCD_DATA_j[j], "dane eksperymentalne", "ep");
-        MyLegend02->AddEntry(totalFunct[j], "funkcja dopasowania", "l");
+        MyLegend02->AddEntry(totalFunct[j], "dopasowana funkcja", "l");
         MyLegend02->AddEntry(hThetaCD_DATA_sign_i[j], "\\hbox{sygnał}", "f");
         MyLegend02->AddEntry(hThetaCD_DATA_bkgnd_i[j], "\\hbox{tło}", "f");
         //MyLegend02->AddEntry(hThetaCD_MC_i[j], "WMC: pd #rightarrow ppn_{sp}", "ep");

@@ -164,7 +164,7 @@ void ThetaCD_merge() {
     double Ymax01 = 1.1*hThetaCD_MC_qf->GetMaximum();
 
     hThetaCD_MC_qf->SetTitle("");
-    hThetaCD_MC_qf->GetXaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaCD_MC_qf->GetXaxis()->SetTitle("#theta_{CD} [deg]");
     hThetaCD_MC_qf->GetXaxis()->SetTitleOffset(1.);
     hThetaCD_MC_qf->GetXaxis()->SetTitleSize(0.06);
     hThetaCD_MC_qf->GetXaxis()->SetLabelSize(0.05);
@@ -235,6 +235,7 @@ void ThetaCD_merge() {
     //
     TCanvas* MyCanvas01a = new TCanvas;
 
+    hThetaCD_MC_qf->GetXaxis()->SetTitle("#theta_{CD} [#circ]");
     hThetaCD_MC_qf->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
     hThetaCD_MC_qf->Draw("same C");
     hThetaCD_MC_cut->Draw("same C");
@@ -265,7 +266,7 @@ void ThetaCD_merge() {
     Double_t scaleExp = (hThetaCD_DATA_exp->GetMaximum())/(hThetaCD_DATA->GetMaximum());
 
     hThetaCD_DATA->SetTitle("");
-    hThetaCD_DATA->GetXaxis()->SetTitle("#theta_{CD},#circ");
+    hThetaCD_DATA->GetXaxis()->SetTitle("#theta_{CD} [deg]");
     hThetaCD_DATA->GetXaxis()->SetTitleOffset(1.);
     hThetaCD_DATA->GetXaxis()->SetTitleSize(0.06);
     hThetaCD_DATA->GetXaxis()->SetLabelSize(0.05);
@@ -367,6 +368,7 @@ void ThetaCD_merge() {
     //
     TCanvas* MyCanvas02a = new TCanvas;
 
+    hThetaCD_DATA->GetXaxis()->SetTitle("#theta_{CD} [#circ]");
     hThetaCD_DATA->GetYaxis()->SetTitle("\\hbox{liczba zliczeń}");
 
     hThetaCD_DATA->Draw("p");
@@ -401,7 +403,7 @@ void ThetaCD_merge() {
     Double_t maxY03 = 1.2*(hExcessEnergy_DATA->GetMaximum());
 
     hExcessEnergy_DATA->SetTitle("");
-    hExcessEnergy_DATA->GetXaxis()->SetTitle("excess energy, MeV");
+    hExcessEnergy_DATA->GetXaxis()->SetTitle("excess energy [MeV]");
     hExcessEnergy_DATA->GetXaxis()->SetTitleOffset(1.);
     hExcessEnergy_DATA->GetXaxis()->SetTitleSize(0.06);
     hExcessEnergy_DATA->GetXaxis()->SetLabelSize(0.05);
