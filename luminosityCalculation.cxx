@@ -364,7 +364,7 @@ void luminosityCalculation(){
     cout<<"Error from pp cross sect: "<<errSystLuminPartTotal[8]<<" ("<<(errSystLuminPartTotal[8]/luminosityTotal)*100<<"%)"<<endl;
 */
     ofstream results;
-    results.open("output/files/LuminosityQuasyFreeReaction.dat", ios::app);
+    results.open("output/files/LuminosityResults.dat", ios::app);
     results<<Form("Integrated luminosity is equal to %.0f",luminosityTotal)<<endl;
     results<<Form("Statistical uncertainties: %.0f (%.1f%%)",errStatLuminTotal,(errStatLuminTotal/luminosityTotal)*100)<<endl;
     results<<Form("Systematic from cuts: %.0f (%.1f%%)",errStatLuminCuts,(errStatLuminCuts/luminosityTotal)*100)<<endl;
