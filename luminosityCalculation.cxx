@@ -366,16 +366,16 @@ void luminosityCalculation(){
     ofstream results;
     results.open("output/files/LuminosityQuasyFreeReaction.dat", ios::app);
     results<<Form("Integrated luminosity is equal to %.0f",luminosityTotal)<<endl;
-    results<<Form("Statistical uncertainties: %.0f (%.1f%)",errStatLuminTotal,(errStatLuminTotal/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from cuts: %.0f (%.1f%)",errStatLuminCuts,(errStatLuminCuts/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from bkgnd rejection in thetaCD: %.0f (%.1f%)",errSystLuminPartTotal[6],(errSystLuminPartTotal[6]/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from bkgnd rejection in deltaPhi: %.0f (%.1f%)",errSystLuminPartTotal[0],(errSystLuminPartTotal[0]/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from Fermi mom distr: %.0f (%.1f%)",errSystLuminPartTotal[5],(errSystLuminPartTotal[5]/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from interpolation: %.0f (%.1f%)",errSystLuminPartTotal[1],(errSystLuminPartTotal[1]/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from shadow effect: %.0f (%.1f%)",errSystLuminPartTotal[7],(errSystLuminPartTotal[7]/luminosityTotal)*100)<<endl;
-    results<<Form("Systematic from pp cross sections: %.0f (%.1f%)",errSystLuminPartTotal[8],(errSystLuminPartTotal[8]/luminosityTotal)*100)<<endl;
-    results<<Form("Total systematic uncertainties: %.0f (%.1f%)",errSystLuminTotal,(errSystLuminTotal/luminosityTotal)*100)<<endl;
-    results<<Form("Normalization error (from EDDA): %.0f (4%)",0.04*luminosityTotal)<<endl;
+    results<<Form("Statistical uncertainties: %.0f (%.1f%%)",errStatLuminTotal,(errStatLuminTotal/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from cuts: %.0f (%.1f%%)",errStatLuminCuts,(errStatLuminCuts/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from bkgnd rejection in thetaCD: %.0f (%.1f%%)",errSystLuminPartTotal[6],(errSystLuminPartTotal[6]/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from bkgnd rejection in deltaPhi: %.0f (%.1f%%)",errSystLuminPartTotal[0],(errSystLuminPartTotal[0]/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from Fermi mom distr: %.0f (%.1f%%)",errSystLuminPartTotal[5],(errSystLuminPartTotal[5]/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from interpolation: %.0f (%.1f%%)",errSystLuminPartTotal[1],(errSystLuminPartTotal[1]/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from shadow effect: %.0f (%.1f%%)",errSystLuminPartTotal[7],(errSystLuminPartTotal[7]/luminosityTotal)*100)<<endl;
+    results<<Form("Systematic from pp cross sections: %.0f (%.1f%%)",errSystLuminPartTotal[8],(errSystLuminPartTotal[8]/luminosityTotal)*100)<<endl;
+    results<<Form("Total systematic uncertainties: %.0f (%.1f%%)",errSystLuminTotal,(errSystLuminTotal/luminosityTotal)*100)<<endl;
+    results<<Form("Normalization error (from EDDA): %.0f (4%%)",0.04*luminosityTotal)<<endl;
     results.close();
 
     //create new output file.root
