@@ -435,7 +435,7 @@ void drawHistograms_pl() {
     TLegend *MyLegend06 = new TLegend(0.385, 0.815, 0.855, 0.885);
     MyLegend06->SetFillStyle(1001); MyLegend06->SetFillColor(19); MyLegend06->SetLineColor(1); MyLegend06->SetBorderSize(5);
     MyLegend06->SetTextSize(0.04);
-    MyLegend06->AddEntry((TObject*)0, "WMC: pd #rightarrow d#pi^{+}n_{sp}", "");
+    MyLegend06->AddEntry((TObject*)0, "WMC: pd #rightarrow pd", "");
     //MyLegend06->AddEntry(line020, "\\hbox{cięcie}", "l");
     MyLegend06->Draw();
 
